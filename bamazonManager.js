@@ -35,7 +35,7 @@ function start() {
       } else if (answer.selectChoice === "View Low Inventory") {
         viewLowInventory();
       } else if (answer.selectChoice === "Add to Inventory") {
-        viewLowInventory();
+        addToInventory();
       } else if (answer.selectChoice === "Add New Product") {
       	addNewProduct();
       }
@@ -63,10 +63,10 @@ function viewLowInventory() {
     		if(res[i].stock_quantity <= 5){
     			console.log("Here are the products that are running low: ");
     			console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].price + " | " + res[i].stock_quantity);
-    			console.log("-----------------------------------");
+    			console.log("---------------------------------------------------------------------------------------------------");
     		} else {
-      		console.log("All your products are well stocked for now. Please check back tomorrow!");
-      		console.log("-----------------------------------");
+      		console.log("The " + res[i].product_name + " item is well stocked for now. Please check back tomorrow!");
+      		console.log("-------------------------------------------------------------------------------------------------------");
       	}
       }
     start();
@@ -90,14 +90,14 @@ function viewLowInventory() {
     	}, {
     		type:"input",
     		name: "quantity",
-    		message: "Please enter the amount you would like to add",
-    		validate: function(value){
-    			if(NaN(value) === false){
-    				return true;
-    			} else {
-    				return false;
-    			}
-    		}
+    		message: "Please enter the amount you would like to add"
+    		// validate: function(value){
+    		// 	if(NaN(value) === false){
+    		// 		return true;
+    		// 	} else {
+    		// 		return false;
+    		// 	}
+    		// }
     	}]).then(function(ans){
     		var currentlyAvailQuantity;
     		for (var i=0; i < res.length; i++){
